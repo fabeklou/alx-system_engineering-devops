@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# This script displays `Best School` 10 times
+
+MAX=10
+
+for ((i=0 ; i<$MAX ; i++))
+do
+    echo "Best School"
+done
+
+exit 0
