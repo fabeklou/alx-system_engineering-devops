@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# This script displays `Best School` 10 times , but
+# for the 9th iteration, displays Best School and then Hi on a new line
+
+FROM=0 ; MAX=10
+
+while [ $FROM -lt $MAX ]
+do
+    echo "Best School"
+    if [ $FROM -eq 8 ]
+    then
+        echo "hi"
+    fi
+    ((FROM++))
+done
