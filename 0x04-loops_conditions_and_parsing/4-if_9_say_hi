@@ -9,7 +9,7 @@ do
     echo "Best School"
     if [ $FROM -eq 8 ]
     then
-        echo "hi"
+        echo "Hi"
     fi
     ((FROM++))
 done
