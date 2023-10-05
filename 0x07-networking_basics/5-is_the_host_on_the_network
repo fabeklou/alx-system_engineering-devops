@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# This script pings en IP passed as en argument from the terminal
+
+IP_ADD=$1
+SCRIPT_NAME=$0
+
+if [ "$IP_ADD" = '' ]
+then
+    echo "Usage: $SCRIPT_NAME {IP_ADDRESS}"
+    exit 1
+fi
+
+ping -c 5 "$IP_ADD"
