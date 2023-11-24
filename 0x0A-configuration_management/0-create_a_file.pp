@@ -1,7 +1,4 @@
-# This manifest creates a <school> file in the </tmp>
-#     directory with the string 'I love puppet' as
-#     content
-
+# This manifest creates a <school> file in the </tmp> directory with the string 'I love puppet' as content
 
 file { '/tmp/school':
   content => 'I love puppet',
