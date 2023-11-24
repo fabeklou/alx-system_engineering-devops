@@ -5,9 +5,9 @@
 $file_path = '/tmp/school'
 
 file { $file_path:
-  ensure  => 'file',
-  content => 'I love puppet',
-  owner   => 'www-data',
-  group   => 'www-data',
-  mode    => '0744',
+    ensure  => 'file',
+    content => 'I love puppet',
+    owner   => 'www-data',
+    group   => 'www-data',
+    mode    => '0744',
 }
