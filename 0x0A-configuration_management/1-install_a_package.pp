@@ -1,7 +1,9 @@
-# This manifest installs version <2.1.0> of <flask> using <pip3>
+# This manifest installs a version <2.1.0> of the
+#     the python framework <flask> using <pip3>
 
-package { 'flask':
+$pckg = 'flask'
+
+package { $pckg:
     ensure   => '2.1.0',
-    provider => 'pip3',
-    name     => 'flask'
+    provider => 'pip3'
 }
