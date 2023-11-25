@@ -1,9 +1,8 @@
-# This manifest creates a <school> file in the </tmp> directory
+# This manifest creates a <school> file
 
 file { '/tmp/school':
-    ensure  => 'file',
-    owner   => 'www-data',
     group   => 'www-data',
+    owner   => 'www-data',
     mode    => 'u=rwx,g=r,o=r',
-    content => 'I love puppet',
+    content => 'I love puppet'
 }
