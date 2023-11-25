@@ -1,8 +1,12 @@
-# This manifest creates a <school> file
+# This manifest creates a <school> file in the </tmp>
+#     directory with the string 'I love puppet' as
+#     content
 
-file { '/tmp/school':
-    group   => 'www-data',
+$file_path = '/tmp/school'
+
+file { $file_path:
+    content => 'I love Puppet',
     owner   => 'www-data',
-    mode    => 'u=rwx,g=r,o=r',
-    content => 'I love Puppet'
+    group   => 'www-data',
+    mode    => 'u=rwx,g=r,o=r'
 }
