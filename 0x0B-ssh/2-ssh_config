@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# my ~/.ssh/config file content
+#       allow connection to a server without typing a password
+Host alx-srv
+    HostName 100.24.206.79
+    User ubuntu
+    Port 22
+    PasswordAuthentication no
+    IdentityFile ~/.ssh/school
+    ServerAliveInterval 120
