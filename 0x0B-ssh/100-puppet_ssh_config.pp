@@ -1,19 +1,11 @@
 # This manifest make changes to the system-wide
 #      configuration file (/etc/ssh/ssh_config)
 
-include stdlib
+$content = "# Managed by Puppet -V 5.5
+    PasswordAuthentication no
+    IdentityFile ~/.ssh/school"
 
-$passwd_auth = '    PasswordAuthentication no'
-$id_file = '    IdentityFile ~/.ssh/school'
-
-file_line { 'Turn off passwd auth':
+file { '/etc/ssh/ssh_config':
     ensure  => present,
-    path    => '/home/akagami/Akagami/ALX-PROJECTS/alx-system_engineering-devops/0x0B-ssh/config',
-    content => $passwd_auth
-}
-
-file_line { 'Declare identity file':
-    ensure  => present,
-    path    => '/home/akagami/Akagami/ALX-PROJECTS/alx-system_engineering-devops/0x0B-ssh/config',
-    content => $id_file
+    content => $content
 }
