@@ -2,4 +2,4 @@
 # This cript uses ssh to connect to a server using the
 #       private key:     ~/.ssh/school
 #       with the user:   ubuntu
-echo IdentityFile ~/.ssh/school >> ~/.ssh/config ; ssh ubuntu@100.24.206.79
+ssh ubuntu@100.24.206.79 -i ~/.ssh/school
