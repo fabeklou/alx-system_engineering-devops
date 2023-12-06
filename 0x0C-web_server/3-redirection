@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# This script configure an nginx server so that
+# /redirect_me is redirecting to another page
+
+redirection_context="location /redirect_me {\n
+\treturn 301 https://github.com/fabeklou;\n}\n"
+
+config_file=/etc/nginx/sites-available/fabeklou.tech;
+
+apt update -y ; apt upgrade -y
+apt install nginx -y
+ufw allow 'Nginx HTTP'
+echo "Hello World!" > /var/www/html/index.html
+line_number=$(grep -n 'location / {' $config_file | cut -d: -f1)
+sed -i "${line_number} i \ ${redirection_context}" $config_file
+service nginx restart
