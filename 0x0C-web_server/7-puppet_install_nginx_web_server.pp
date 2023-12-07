@@ -8,17 +8,17 @@ $redirect_me = "    # Managed by Puppet -V 5.5
 "
 
 exec { 'Update : Advanced Packaging Tool':
-    command     => 'sudo /bin/apt update -y'
+    command     => '/bin/apt update -y'
 }
 
 package { 'Installing Nginx -V 1.18.0':
-    ensure   => '1.18.0',
+    ensure   => installed,
     name     => 'nginx',
     provider => 'apt'
 }
 
 exec { 'Allowing nginx to accept http requests on port 80':
-    command     => 'sudo /sbin/ufw allow \'Nginx HTTP\'',
+    command     => '/sbin/ufw allow \'Nginx HTTP\'',
 }
 
 file { '/var/www/html/index.html':
@@ -34,5 +34,5 @@ file_line { 'Add redirection context to the default config file':
 }
 
 exec { 'restarting the nginx server':
-    command     => 'sudo /sbin/service nginx restart'
+    command     => '/sbin/service nginx restart'
 }
