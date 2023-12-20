@@ -1,4 +1,5 @@
-# This manifest install and configure an Nginx server
+# This manifest configure an Nginx server to have a
+# costum http header response
 
 $config_file = '/etc/nginx/sites-available/default'
 $redirect_me = "    # Managed by Puppet -V 5.5
@@ -6,7 +7,9 @@ $redirect_me = "    # Managed by Puppet -V 5.5
         return 301 https://github.com/fabeklou;
     }
 "
-$custom_header = "add_header X-Served-By \"${hostname}\";"
+$custom_header = "
+    add_header X-Served-By '${hostname}';
+"
 
 exec { 'Update : Advanced Packaging Tool':
     command     => '/bin/apt update -y'
