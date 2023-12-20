@@ -8,7 +8,8 @@ $redirect_me = "    # Managed by Puppet -V 5.5
     }
 "
 $custom_header = "
-    add_header X-Served-By '${hostname}';
+    http {
+        add_header X-Served-By \"${hostname}\";
 "
 
 exec { 'Update : Advanced Packaging Tool':
@@ -40,8 +41,8 @@ file_line { 'Add redirection context to the default config file':
 file_line { 'creating a custom HTTP header response':
     ensure => present,
     path   => $config_file,
-    line   => $custom_header,
-    after  => 'server_name _;'
+    match  => 'http {',
+    line   => $custom_header
 }
 
 exec { 'restarting the nginx server':
