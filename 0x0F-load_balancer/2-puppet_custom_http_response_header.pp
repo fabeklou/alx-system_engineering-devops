@@ -1,7 +1,7 @@
 # This manifest configure an Nginx server to have a
 # costum http header response
 
-$config_file = '/etc/nginx/sites-available/default'
+$config_file = '/etc/nginx/nginx.conf'
 
 $custom_header = "
     add_header X-Served-By \"${hostname}\";
@@ -13,7 +13,7 @@ exec { 'Update : Advanced Packaging Tool':
 
 -> package { 'Ensure Nginx -V 1.18.0 is installed':
     ensure => present,
-    name   => 'nginx',
+    name   => 'nginx'
 }
 
 -> file_line { 'creating a custom HTTP header response':
