@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-# This cript uses ssh to connect to a server using the
-#       private key:     ~/.ssh/school
-#       with the user:   ubuntu
-ssh ubuntu@100.24.206.79 -i ~/.ssh/school

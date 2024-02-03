@@ -1,2 +1,0 @@
-# usage:       cat scp-file-tr-cmd | bash 
-./0-transfer_file ./some_page.html  100.24.206.79 ubuntu ~/.ssh/school

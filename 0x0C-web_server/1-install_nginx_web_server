@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-# This script installs an nginx web server
-
-apt update -y ; apt upgrade -y
-apt install nginx -y
-ufw allow 'Nginx HTTP'
-echo "Hello World!" > /var/www/html/index.html
-service nginx restart

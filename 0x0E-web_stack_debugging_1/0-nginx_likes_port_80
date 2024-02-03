@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-# This script runs nginx and make sure nginx is
-#   listening on port 80 of all the server’s active
-rm /etc/nginx/sites-enabled/default
-ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default 
-service nginx restart
