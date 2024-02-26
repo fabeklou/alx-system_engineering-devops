@@ -1,0 +1,7 @@
+Host web-01
+    HostName 18.234.169.238
+    User ubuntu
+    Port 22
+    PasswordAuthentication no
+    IdentityFile ~/.ssh/school
+    ServerAliveInterval 120
