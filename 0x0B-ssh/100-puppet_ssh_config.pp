@@ -3,15 +3,17 @@
 #   a password by making changes to the system-wide
 #   configuration file (/etc/ssh/ssh_config)
 
-$path = '/etc/ssh/ssh_config'
-$content = "# Managed by Puppet -V 5.5
+$file_path = '/etc/ssh/ssh_config'
+$file_content = "# Managed by Puppet -V 5.5
     PasswordAuthentication no
-    IdentityFile ~/.ssh/school"
+    IdentityFile ~/.ssh/school
+"
 
 node default {
 
-    file { $path:
+    file { 'client SSH configuration file':
         ensure  => present,
-        content => $content
+        path    => $file_path,
+        content => $file_content
     }
 }
