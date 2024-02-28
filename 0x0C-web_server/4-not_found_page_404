@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# This script configure an nginx server so that
+# /redirect_me is redirecting to another page and
+# have a custom 404 page that contains the string
+# <Ceci n'est pas une page>
+
+redirection="server_name _;\n\n\tlocation \/redirect_me {\n\t\treturn 301 https:\/\/github.com\/fabeklou;\n\t}\n"
+not_found="server_name _;\n\terror_page 404 \/404.html;\n\tlocation \/404.html {\n\t\troot \/var\/www\/html;\n\t\tinternal;\n\t}\n"
+config_file=/etc/nginx/sites-available/default
+
+apt update -y ; apt upgrade -y
+apt install nginx -y
+ufw allow 'Nginx HTTP'
+echo "Hello World!" > /var/www/html/index.html
+echo Ceci n\'est pas une page > /var/www/html/404.html
+sudo sed -i "s/server_name _;/${redirection}/" "$config_file"
+sudo sed -i "s/server_name _;/${not_found}/" "$config_file"
+service nginx restart
