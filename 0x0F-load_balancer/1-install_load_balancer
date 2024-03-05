@@ -25,8 +25,8 @@ frontend fabeklou-frontend
 
 backend fabeklou-backend
     balance roundrobin
-    server 258961-web-01 100.24.206.79:80 check
-    server 258961-web-02 54.237.119.147:80 check
+    server 258961-web-01 18.234.169.238:80 check
+    server 258961-web-02 35.174.176.187:80 check
 "
 
 # updating the haproxy.cfg file
