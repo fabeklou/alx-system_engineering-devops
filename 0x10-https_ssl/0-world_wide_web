@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# This script accept Two arguments (domain, subdomain)
+#   and print information about the subdomain
+
+DOMAIN=$1
+SUB_DOMAIN=$2
+
+# Function to get and print subdomain informations
+get_info () {
+    # $1: SUB_DOMAIN   $2: DOMAIN
+    URL="$1.$2"; SUB_DOMAIN="$1"
+    OUTPUT=$(dig "$URL" | grep -A1 "ANSWER SECTION:" | tail -n 1 | tr '\t' ' ' | cut -d " " -f 4-5)
+    RECORD=$(echo "$OUTPUT" | awk '{printf $1}'); IP=$(echo "$OUTPUT" | awk '{printf $2}')
+    echo "The subdomain $SUB_DOMAIN is a $RECORD record and points to $IP"
+}
+
+if [ "$SUB_DOMAIN" ]
+then
+    get_info "$SUB_DOMAIN" "$DOMAIN"
+else
+    SUB_DOMAIN_LIST=("www" "lb-01" "web-01" "web-02")
+    for SUB_DOMAIN in "${SUB_DOMAIN_LIST[@]}"
+    do
+        get_info "$SUB_DOMAIN" "$DOMAIN"
+    done
+fi
