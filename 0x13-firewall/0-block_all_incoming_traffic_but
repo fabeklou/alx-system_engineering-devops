@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# commands used to block all incoming traffic, except:
+#   22 (SSH)
+#   443 (HTTPS SSL)
+#   80 (HTTP)
+ufw default deny incoming ; ufw default allow outgoing
+ufw allow 22 ; ufw allow 80 ; ufw allow 443
+ufw disable ; ufw enable
