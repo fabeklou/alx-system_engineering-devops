@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# This script accepts one argument (a user name) and run a whoami command
+USER=$1
+su - "$USER" -c "whoami"
