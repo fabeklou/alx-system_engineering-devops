@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# This script generates a MySQL dump and creates a compressed archive out of it
+PASS_WD=$1
+mysqldump --user root --password "$PASS_WD" --all-databases > backup.sql
+tar -zcvf "$(date -u +%d-%m-%Y).tar.gz" backup.sql
