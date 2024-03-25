@@ -26,6 +26,6 @@ if __name__ == "__main__":
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         # writer.writeheader()
         for task in tasks:
-            writer.writerow({"USER_ID": str(USER_ID), "USERNAME": str(USERNAME),
+            writer.writerow({"USER_ID": USER_ID, "USERNAME": USERNAME,
                              "TASK_COMPLETED_STATUS": task.get("completed"),
                              "TASK_TITLE": task.get("title")})
