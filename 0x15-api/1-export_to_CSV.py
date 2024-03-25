@@ -5,6 +5,7 @@ prints the data, formated to the stdin
 """
 
 import csv
+import json
 import requests
 import sys
 
@@ -23,7 +24,8 @@ if __name__ == "__main__":
     with open("{}.csv".format(USER_ID), "w", newline="") as csvfile:
         fieldnames = ["USER_ID", "USERNAME",
                       "TASK_COMPLETED_STATUS", "TASK_TITLE"]
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        writer = csv.DictWriter(
+            csvfile, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
         # writer.writeheader()
         for task in tasks:
             writer.writerow({"USER_ID": USER_ID, "USERNAME": USERNAME,
