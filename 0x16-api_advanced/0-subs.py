@@ -24,6 +24,6 @@ def number_of_subscribers(sub):
 
     res = requests.get(URL, allow_redirects=False, headers=UA)
 
-    if res.status_code != 200:
+    if res.status_code == 404:
         return 0
     return res.json().get('data').get('subscribers')
