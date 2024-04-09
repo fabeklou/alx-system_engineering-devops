@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+"""this module contains a function that GET data from the Reddit Api"""
+
 
 def number_of_subscribers(sub):
     """GET and return the number of subscribers of the given subreddit
