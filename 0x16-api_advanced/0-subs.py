@@ -6,7 +6,8 @@ import requests
 
 
 def number_of_subscribers(subreddit):
-    """GET and return the number of subscribers of the given subreddit
+    """
+    GET and return the number of subscribers of the given subreddit
 
     Args:
         subreddit (str): the name of subreddit
@@ -24,6 +25,7 @@ def number_of_subscribers(subreddit):
 
     res = requests.get(URL, allow_redirects=False, headers=UA)
 
-    if res.status_code == 404:
+    try:
+        return res.json().get('data').get('subscribers')
+    except Exception:
         return 0
-    return res.json().get('data').get('subscribers')
