@@ -25,9 +25,8 @@ def number_of_subscribers(subreddit):
     UA = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
     URL = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
 
-    res = requests.get(URL, allow_redirects=False, headers=UA)
+    res = requests.get(URL, headers=UA, allow_redirects=False)
 
-    try:
-        return res.json().get('data').get('subscribers')
-    except Exception:
+    if res.status_code != 200:
         return 0
+    return res.json().get('data').get('subscribers')
