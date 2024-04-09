@@ -2,6 +2,8 @@
 
 """this module contains a function that GET data from the Reddit Api"""
 
+import requests
+
 
 def number_of_subscribers(sub):
     """GET and return the number of subscribers of the given subreddit
@@ -13,7 +15,6 @@ def number_of_subscribers(sub):
         (int): the number of subscribers of the given subreddit
             or 0 if the subreddit does not exist
     """
-    import requests
 
     URL = 'https://www.reddit.com/r/{}/about.json'.format(sub)
 
