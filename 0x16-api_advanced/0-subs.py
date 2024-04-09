@@ -16,9 +16,10 @@ def number_of_subscribers(sub):
             or 0 if the subreddit does not exist
     """
 
+    UA = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
     URL = 'https://www.reddit.com/r/{}/about.json'.format(sub)
 
-    res = requests.get(URL, allow_redirects=False)
+    res = requests.get(URL, allow_redirects=False, headers=UA)
 
     if res.status_code != 200:
         return 0
