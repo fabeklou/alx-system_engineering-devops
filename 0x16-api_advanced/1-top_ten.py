@@ -16,14 +16,16 @@ def top_ten(subreddit):
 
     """
 
-    UA = {'User-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
+    UA = {'User-agent': 'Google Chrome Version 81.0.4044.129'}
     URL = 'https://www.reddit.com/r/{}/hot/.json'.format(subreddit)
     PARAMS = {'limit': 10}
 
     res = requests.get(URL, headers=UA, allow_redirects=False, params=PARAMS)
 
-    if res.status_code != 200:
-        print('None')
-        return
-    for post in res.json().get('data').get('children'):
-        print(post.get('data').get('title'))
+    try:
+        posts = res.json().get('data').get('children')
+        for post in posts:
+            print(post.get('data').get('title'))
+
+    except Exception:
+        print("None")
