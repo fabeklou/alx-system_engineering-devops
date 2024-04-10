@@ -12,18 +12,23 @@ def top_ten(subreddit):
     GET and prints the first 10 hot posts listed for a given subreddit
 
     Args:
-        subreddit (str): the name of subreddit
+        subreddit (str): the name of the subreddit
 
     """
 
-    UA = {'User-agent': 'Google Chrome Version 81.0.4044.129'}
-    URL = 'https://www.reddit.com/r/{}/hot/.json'.format(subreddit)
-    PARAMS = {'limit': 10}
+    if not subreddit or not isinstance(subreddit, str):
+        print("None")
 
-    res = requests.get(URL, headers=UA, allow_redirects=False, params=PARAMS)
+    user_agent = {'User-agent': 'Google Chrome Version 81.0.4044.129'}
+    params = {'limit': 10}
+    url = 'https://www.reddit.com/r/{}/hot/.json'.format(subreddit)
+
+    response = requests.get(url, headers=user_agent, params=params)
+    data = response.json()
 
     try:
-        posts = res.json().get('data').get('children')
+        posts = data.get('data').get('children')
+
         for post in posts:
             print(post.get('data').get('title'))
 
