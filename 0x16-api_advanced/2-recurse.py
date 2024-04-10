@@ -22,25 +22,33 @@ def recurse(subreddit, hot_list=[], after=None):
 
     """
 
-    UA = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
-    URL = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
-    PARAMS = {'after': after}  if after else {}
+    params = {'show': 'all'}
 
-    res = requests.get(URL, headers=UA, allow_redirects=False, params=PARAMS)
-
-    if res.status_code != 200:
+    if subreddit is None or not isinstance(subreddit, str):
         return None
 
-    data = res.json().get('data')
-    if not data or 'children' not in data:
+    user_agent = {'User-agent': 'Google Chrome Version 81.0.4044.129'}
+
+    url = 'https://www.reddit.com/r/{}/hot/.json?after={}'.format(subreddit,
+                                                                  after)
+
+    response = requests.get(url, headers=user_agent, params=params)
+
+    if (response.status_code != 200):
         return None
 
-    for post in data.get('children'):
-        hot_list.append(post.get('data').get('title'))
+    all_data = response.json()
 
-    # Check for pagination and recurse if there are more pages
-    after = data.get('after', None)
-    if after:
+    try:
+        raw1 = all_data.get('data').get('children')
+        after = all_data.get('data').get('after')
+
+        if after is None:
+            return hot_list
+
+        for i in raw1:
+            hot_list.append(i.get('data').get('title'))
+
         return recurse(subreddit, hot_list, after)
-    else:
-        return hot_list
+    except:
+        print("None")
