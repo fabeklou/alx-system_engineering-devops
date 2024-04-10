@@ -23,14 +23,14 @@ def top_ten(subreddit):
     params = {'limit': 10}
     url = 'https://www.reddit.com/r/{}/hot/.json'.format(subreddit)
 
-    response = requests.get(url, headers=user_agent, params=params)
-    data = response.json()
+    res = requests.get(url, headers=user_agent, params=params)
+    dt = res.json()
 
     try:
-        posts = data.get('data').get('children')
+        psts = dt.get('data').get('children')
 
-        for post in posts:
-            print(post.get('data').get('title'))
+        for pst in psts:
+            print(pst.get('data').get('title'))
 
     except Exception:
         print("None")
