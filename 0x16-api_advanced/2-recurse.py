@@ -6,6 +6,7 @@ this module contains a function that GET data from the Reddit Api
 
 import requests
 
+
 def recurse(subreddit, hot_list=[], after=None):
     """
     Recursively fetches hot articles from a subreddit and returns their titles
@@ -50,5 +51,5 @@ def recurse(subreddit, hot_list=[], after=None):
             hot_list.append(i.get('data').get('title'))
 
         return recurse(subreddit, hot_list, after)
-    except:
+    except Exception:
         print("None")
